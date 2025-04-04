@@ -1,0 +1,20 @@
+/gate/world/daughters/name phantom
+/gate/world/daughters/insert box
+/gate/phantom/placement/setTranslation 0. 0. 63. cm
+/gate/phantom/geometry/setXLength 3.5 mm
+/gate/phantom/geometry/setYLength 3.5 mm
+/gate/phantom/geometry/setZLength  5.5 cm
+/gate/phantom/setMaterial Air
+/gate/phantom/vis/forceWireframe
+/gate/phantom/vis/setVisible false
+
+
+/gate/phantom/daughters/name bg
+/gate/phantom/daughters/insert box
+/gate/bg/placement/setTranslation 0. 0. 0. cm
+/gate/bg/geometry/setXLength 3.5 mm
+/gate/bg/geometry/setYLength 3.5 mm
+/gate/bg/geometry/setZLength  5. cm
+/gate/bg/setMaterial StandardBreast
+/gate/bg/vis/forceWireframe
+/gate/bg/vis/setColor cyan

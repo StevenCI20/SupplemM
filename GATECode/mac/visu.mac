@@ -1,0 +1,10 @@
+/vis/open OGLSX 1000x800+0-0
+/vis/drawVolume
+/vis/scene/add/trajectories
+/vis/viewer/set/viewpointThetaPhi 90 0
+#/vis/viewer/zoom 10
+/vis/scene/add/axes 0 0 0 5 cm
+/tracking/storeTrajectory 0
+/vis/scene/endOfEventAction accumulate 10
+
+#/vis/viewer/flush

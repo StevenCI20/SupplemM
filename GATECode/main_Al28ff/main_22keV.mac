@@ -1,0 +1,108 @@
+/control/alias primaries 1194834347
+
+#########################
+# SET MATERIAL DATABASE #
+#########################
+/gate/geometry/setMaterialDatabase ../data/GateMaterials.db
+
+#############
+# VERBOSITY #
+#############
+/control/execute ../mac/verbose.mac
+
+#########
+# WORLD #
+#########
+/gate/world/geometry/setXLength 200. cm
+/gate/world/geometry/setYLength 200. cm
+/gate/world/geometry/setZLength 200. cm
+/gate/world/setMaterial Air
+/gate/world/vis/setVisible false
+
+#######################################
+# GEOMETRY                            #
+#######################################
+
+/control/execute ../mac/detector.mac
+/control/execute ../mac/FFphantom.mac
+
+###########
+# PHYSICS #
+###########
+/gate/physics/addPhysicsList emstandard_opt4
+
+/gate/physics/Gamma/SetCutInRegion      world 5 mm
+/gate/physics/Electron/SetCutInRegion   world 5 mm
+/gate/physics/Positron/SetCutInRegion   world 5 mm
+
+/gate/physics/Gamma/SetCutInRegion      phantom 0.25 mm
+/gate/physics/Electron/SetCutInRegion   phantom 0.25 mm
+/gate/physics/Positron/SetCutInRegion   phantom 0.25 mm
+
+/gate/physics/Gamma/SetCutInRegion      CTscanner 0.01 cm
+/gate/physics/Electron/SetCutInRegion   CTscanner 0.01 cm
+/gate/physics/Positron/SetCutInRegion   CTscanner 0.01 cm
+
+/gate/physics/displayCuts
+
+#############
+# DIGITIZER #
+#############
+/control/execute ../mac/digitizer.mac
+
+##################
+# INITIALIZATION #
+##################
+/gate/run/initialize
+
+##############
+# SOURCE GPS #
+##############
+/control/execute ../sources/source_22keV.mac
+
+############################
+# VISUALIZATION PARAMETERS #
+############################
+#/control/execute ../mac/visu.mac
+/vis/disable
+
+##########
+# OUTPUT #
+##########
+/gate/output/root/enable
+/gate/output/root/setFileName ../output/FFAl28Ph2_22keV
+/gate/output/root/setRootHitFlag            0
+/gate/output/root/setRootSinglesFlag        1
+/gate/output/root/setRootNtupleFlag         0
+
+##########
+# RANDOM #
+##########
+/gate/random/setEngineName MersenneTwister
+/gate/random/setEngineSeed auto
+
+###############
+# ACQUISITION #
+###############
+
+# BY PRIMARIES #
+
+/gate/application/setTotalNumberOfPrimaries {primaries}
+/gate/application/startDAQ
+
+# SINGLE PROJECTION #
+
+#/gate/application/setTimeSlice     90. s
+#/gate/application/setTimeStart     0.  s
+#/gate/application/setTimeStop      180. s
+
+
+# 360 PROJECTIONS #
+
+#/gate/application/setTimeSlice     1. s
+#/gate/application/setTimeStart     0.  s
+#/gate/application/setTimeStop      360. s
+
+
+exit
+

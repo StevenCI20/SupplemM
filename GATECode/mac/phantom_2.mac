@@ -1,0 +1,64 @@
+/gate/world/daughters/name phantom
+/gate/world/daughters/insert box
+/gate/phantom/placement/setTranslation 0. 0. 63.5 cm
+/gate/phantom/geometry/setXLength 3.5 mm
+/gate/phantom/geometry/setYLength 3.5 mm
+/gate/phantom/geometry/setZLength  6.5 cm
+/gate/phantom/setMaterial Air
+/gate/phantom/vis/forceWireframe
+/gate/phantom/vis/setVisible false
+
+
+/gate/phantom/daughters/name breast
+/gate/phantom/daughters/insert box
+/gate/breast/placement/setTranslation 0. 0. -0.5 cm
+/gate/breast/geometry/setXLength 3.5 mm
+/gate/breast/geometry/setYLength 3.5 mm
+/gate/breast/geometry/setZLength  5. cm
+/gate/breast/setMaterial StandardBreast
+/gate/breast/vis/forceWireframe
+/gate/breast/vis/setColor cyan
+
+/gate/phantom/daughters/name Implant
+/gate/phantom/daughters/insert box
+/gate/Implant/placement/setTranslation -0.0875 0. 2.5 cm
+/gate/Implant/geometry/setXLength 1.75 mm
+/gate/Implant/geometry/setYLength 3.5 mm
+/gate/Implant/geometry/setZLength  1.0 cm
+/gate/Implant/setMaterial Silicone
+/gate/Implant/vis/forceWireframe
+/gate/Implant/vis/setColor red
+
+/gate/breast/daughters/name calcification
+/gate/breast/daughters/insert box
+/gate/calcification/geometry/setXLength 0.4455 mm
+/gate/calcification/geometry/setYLength 0.4455 mm
+/gate/calcification/geometry/setZLength 0.4455 mm
+/gate/calcification/setMaterial HA
+/gate/calcification/vis/forceSolid
+/gate/calcification/vis/setColor white
+
+/gate/breast/daughters/name calcification2
+/gate/breast/daughters/insert box
+/gate/calcification2/geometry/setXLength 0.4455 mm
+/gate/calcification2/geometry/setYLength 0.4455 mm
+/gate/calcification2/geometry/setZLength 0.4455 mm
+/gate/calcification2/setMaterial Al2O3
+/gate/calcification2/vis/forceSolid
+/gate/calcification2/vis/setColor blue
+
+/gate/calcification/repeaters/insert cubicArray
+/gate/calcification/cubicArray/setRepeatNumberX 2
+/gate/calcification/cubicArray/setRepeatNumberY 2
+/gate/calcification/cubicArray/setRepeatNumberZ   1
+/gate/calcification/cubicArray/setRepeatVector 0.693 0.693 0.00 mm
+/gate/calcification/cubicArray/autoCenter true
+
+/gate/calcification2/repeaters/insert cubicArray
+/gate/calcification2/cubicArray/setRepeatNumberX 2
+/gate/calcification2/cubicArray/setRepeatNumberY 2
+/gate/calcification2/cubicArray/setRepeatNumberZ   1
+/gate/calcification2/cubicArray/setRepeatVector 1.98 1.98 0.00 mm
+/gate/calcification2/cubicArray/autoCenter true
+
+
